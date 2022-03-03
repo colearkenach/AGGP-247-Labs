@@ -3,32 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using Drawing.Glint;
 
-public class DrawingObject : MonoBehaviour
+public class DrawingObject
 {
     // Default Variables
     public bool PerformDraw = true;
-    public float Roation = 0;
+    // public float Roation = 0;
     public Vector3 Scale = Vector3.zero;
     public Vector3 Location = Vector3.zero;
-    public List<ICommandInstruction> Lines = new List<ICommandInstruction>();
+    public List<Line> Lines = new List<Line>();
 
-    public Grid2d gridObject;
-
-    public void Start()
+    /// <summary>
+    /// Override to draw. It's really annoying.
+    /// </summary>
+    /// <param name="origin"></param>
+    /// <param name="scale"></param>
+    public virtual void Initalize(Vector3 origin, Vector3 scale)
     {
-        Initalize();
-    }
-
-    public virtual void Initalize()
-    {
-
+        // In most initialize scripts, this is where the drawing commands are placed.
     }
 
     public virtual void Update()
     {
         if (PerformDraw)
         {
-            Draw();
+            Draw(); // It auto-draws
         }
     }
 
@@ -36,7 +34,7 @@ public class DrawingObject : MonoBehaviour
     /// Draws the Drawing Object Instance
     /// </summary>
     /// <param name="grid">Optional, When a Grid2d is applied, object is drawn relative to the grid and location is in Grid space</param>
-    public virtual void Draw(Grid2d grid = null)
+    public virtual void Draw(Grid2D grid = null)
     {
         if (Lines.Count != 0)
         {

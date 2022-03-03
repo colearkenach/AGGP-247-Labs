@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ellipse : MonoBehaviour
+public class Ellipse
 {
     public Vector3 Position = Vector2.zero;
     public Vector3 Center = Vector2.zero;
